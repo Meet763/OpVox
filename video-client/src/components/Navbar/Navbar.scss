@@ -1,0 +1,89 @@
+@use '../../styles/variables' as *;
+
+.navbar-container {
+  display: flex;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+
+  .navbar-left-content{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+
+    .meeting-icon {
+      margin-left: 10px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      overflow: hidden; // Ensure image doesn’t overflow the circular container
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; // Image scales to cover the container, cropping if necessary
+      }
+    }
+    .meeting-details{
+      padding-left: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+
+
+      .meeting-code-container{
+        p{
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin: 0;
+        }
+      }
+
+      .meeting-duration-container{
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+
+        p{
+          font-size: 0.9rem;
+          color: $font-secondary-color;
+          margin: 0;
+          padding: 0.2rem 0;
+        }
+
+        .meeting-recording-status{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.3rem;
+          padding: 0.2rem 0;
+          margin: 0;
+          font-size: 12px;
+          color: $danger-color;
+          border-radius: 16px;
+
+
+          .recording-status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: $danger-color;
+            border-radius: 50%;;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-right-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 15px;
+  }
+}

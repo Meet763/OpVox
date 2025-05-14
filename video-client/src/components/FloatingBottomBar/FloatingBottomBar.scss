@@ -1,0 +1,11 @@
+@use '../../styles/variables' as *;
+
+.buttons-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+}
