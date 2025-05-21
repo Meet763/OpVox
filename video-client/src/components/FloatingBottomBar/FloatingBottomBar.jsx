@@ -6,7 +6,6 @@ import {
     VideoOff,
     PhoneOff,
     Captions,
-    CaptionsOff,
     ScreenShare,
 } from "lucide-react";
 import "./FloatingBottomBar.scss";
@@ -59,7 +58,7 @@ const FloatingBottomBar = (
                     : <VideoOff size={26} />}
                 size="lg"
                 isIconOnly={true}
-                className={`control-button ${isVideoOn ? 'active-bg' : 'inactive-bg'}`}
+                className={'control-button'}
                 onClick={() => handleClick('toggleVideo')}
             />
 
@@ -81,14 +80,14 @@ const FloatingBottomBar = (
                 className="control-button"
                 onClick={() => handleClick('endCall')}
             />
-            <Button
-                variant="primary"
-                icon={<ScreenShare size={26} />}
-                size="lg"
-                isIconOnly={true}
-                className="control-button"
-                onClick={() => handleClick('screenShare')}
-            />
+            {/*<Button*/}
+            {/*    variant="primary"*/}
+            {/*    icon={<ScreenShare size={26} />}*/}
+            {/*    size="lg"*/}
+            {/*    isIconOnly={true}*/}
+            {/*    className="control-button"*/}
+            {/*    onClick={() => handleClick('screenShare')}*/}
+            {/*/>*/}
             <Button
                 variant="primary"
                 icon={<Captions size={26} />}

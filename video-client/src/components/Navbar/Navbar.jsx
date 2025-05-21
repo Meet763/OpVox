@@ -6,6 +6,8 @@ import { Users, Settings2, Video } from "lucide-react";
 
 import "./Navbar.scss";
 
+import Logo from "../../assets/OptimozLogoSmall.png";
+
 
 const Navbar = ({
     meetingCode = 'Meeting Code',
@@ -20,7 +22,7 @@ const Navbar = ({
         <div className="navbar-container">
             <div className="navbar-left-content">
                 <div className="meeting-icon">
-                    <img src="src/assets/Optimoz Logo Small.png" alt="logo" />
+                    <img src={Logo} alt="logo" />
                 </div>
                 <div className="meeting-details">
                     <div className="meeting-code-container">
@@ -43,6 +45,7 @@ const Navbar = ({
                 <Button text="Participants"
                         variant="primary"
                         icon={<Users />}
+                        isIconOnly={true}
                         size="md"
                         onClick={onOpenParticipants}
                 />

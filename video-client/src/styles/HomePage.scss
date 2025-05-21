@@ -1,0 +1,130 @@
+// Variables for consistent theming
+$primary-color: #0072BC;
+$background-color: #f8fafc;
+$text-color: #1e293b;
+$input-border: #e2e8f0;
+$button-hover: #0160A3;
+$shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+
+// Container styling
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $background-color;
+  padding: 1.5rem;
+  font-family: 'Inter', sans-serif;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // Form styling
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+
+
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $text-color;
+      }
+
+      input {
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid $input-border;
+        border-radius: 6px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        &::placeholder {
+          color: #94a3b8;
+        }
+      }
+    }
+
+    button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+
+      &:hover {
+        background-color: $button-hover;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        background-color: #94a3b8;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 640px) {
+  .home-page {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    form {
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+  }
+}

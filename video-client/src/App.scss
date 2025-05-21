@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  background-color: #FAFDFF;
 
   &.modal-open {
     .main-container {
@@ -20,10 +21,252 @@
   transition: width 0.3s ease-in-out;
 }
 
+.RemoteVideoContainer {
+  display: grid;
+  gap: 10px; /* Space between grid items */
+  width: 100%; /* Full width of video-box-container */
+  max-width: 1200px; /* Optional: limit max width for large screens */
+  height: 100%; /* Take full height of container */
+  align-content: start; /* Align grid items to top */
+  padding: 10px;
+  box-sizing: border-box;
+
+  /* Default layout for videos */
+  .remote-video-container {
+    aspect-ratio: 16 / 9; /* Maintain video aspect ratio */
+    width: 100%;
+    height: auto;
+    max-height: 100%; /* Prevent overflow */
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .user-id-label {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 10;
+    }
+
+    .mic-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+
+      svg {
+        color: #fff;
+      }
+    }
+
+    .video-off-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 5;
+    }
+  }
+
+  /* Dynamic layouts based on video count */
+  &.video-count-1 {
+    grid-template-columns: 1fr; /* 1 video takes full width */
+    grid-template-rows: 1fr;
+    .remote-video-container {
+      max-height: 80vh; /* Limit height for single video */
+    }
+  }
+
+  &.video-count-2 {
+    grid-template-columns: repeat(2, 1fr); /* 2 videos side by side */
+    grid-template-rows: 1fr;
+  }
+
+  &.video-count-3 {
+    grid-template-columns: repeat(2, 1fr); /* 2 videos in first row, 1 in second */
+    grid-template-rows: auto auto;
+    .remote-video-container:nth-child(3) {
+      grid-column: 1 / 3; /* Third video spans both columns */
+      max-width: 50%; /* Limit width to half */
+      margin: 0 auto; /* Center it */
+    }
+  }
+
+  &.video-count-4 {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 matrix */
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  &.video-count-5 {
+    grid-template-columns: repeat(3, 1fr); /* 3 in first row, 2 in second */
+    grid-template-rows: auto auto;
+    .remote-video-container:nth-child(4),
+    .remote-video-container:nth-child(5) {
+      grid-column: span 1; /* Each takes one column */
+    }
+    .remote-video-container:nth-child(4) {
+      grid-column: 1 / 2; /* Position in first column */
+    }
+    .remote-video-container:nth-child(5) {
+      grid-column: 2 / 3; /* Position in second column */
+    }
+  }
+
+  &.video-count-6 {
+    grid-template-columns: repeat(3, 1fr); /* 3x2 matrix */
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  /* Fallback for more than 6 videos */
+  &.video-count-7,
+  &.video-count-8,
+  &.video-count-9 {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger counts */
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    &.video-count-3 {
+      grid-template-columns: 1fr; /* Stack vertically */
+      .remote-video-container:nth-child(3) {
+        grid-column: 1 / 2;
+        max-width: 100%; /* Full width */
+      }
+    }
+    &.video-count-5 {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      .remote-video-container:nth-child(4),
+      .remote-video-container:nth-child(5) {
+        grid-column: span 1;
+      }
+    }
+    &.video-count-6 {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; /* 1 column for all cases on small screens */
+    grid-template-rows: auto;
+    .remote-video-container {
+      max-width: 100%;
+    }
+    &.video-count-3 .remote-video-container:nth-child(3) {
+      grid-column: 1 / 2;
+      max-width: 100%;
+    }
+  }
+}
+
 .video-box-container {
-  flex: 1;
-  margin: 10px;
-  width: 99%;
+  flex: 1; // Take available space between Navbar and FloatingBottomBar
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; // Full width of main-container
+  padding: 10px; // Adjusted from margin for better spacing
+  box-sizing: border-box;
+  overflow-y: auto; // Allow scrolling if grid overflows
+}
+
+.RemoteVideoContainer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); // 3 columns, equal width
+  gap: 10px; // Space between grid items
+  width: 100%; // Full width of video-box-container
+  max-width: 1200px; // Optional: limit max width for large screens
+  height: 100%; // Take full height of container
+  align-content: start; // Align grid items to top
+  padding: 10px;
+  box-sizing: border-box;
+
+  // Responsive adjustments
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); // 2 columns on medium screens
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; // 1 column on small screens
+  }
+
+  // Ensure RemoteVideo containers are square-ish and responsive
+  .remote-video-container {
+    aspect-ratio: 16 / 9; // Maintain video aspect ratio
+    width: 100%;
+    height: auto;
+    max-height: 100%; // Prevent overflow
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .user-id-label {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 10;
+    }
+
+    .mic-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+
+      svg {
+        color: #fff;
+      }
+    }
+
+    .video-off-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 5;
+    }
+  }
 }
 
 .side-container {
@@ -32,7 +275,6 @@
   align-items: center;
   transform: translateX(100%);
   transition: transform 0.2s ease-in-out, width 0.2s ease-in-out;
-
 
   &.open {
     width: 30%;

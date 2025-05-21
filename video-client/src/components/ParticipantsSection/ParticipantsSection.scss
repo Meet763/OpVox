@@ -1,0 +1,62 @@
+.participant-list {
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 100%;
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .participant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #f5f5f5;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .participant-name {
+      flex: 1;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .participant-status {
+      display: flex;
+      gap: 8px;
+
+      .status-icon {
+        display: flex;
+        align-items: center;
+        color: #666;
+
+        &.muted,
+        &.off {
+          color: #e53e3e;
+        }
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
