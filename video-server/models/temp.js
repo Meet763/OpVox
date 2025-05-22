@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import User from "./user.model.js"
 import Application from "./application.model.js"
 
 async function createSampleData() {
