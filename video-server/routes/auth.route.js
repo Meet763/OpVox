@@ -1,17 +1,19 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     register,
     login,
     profile,
     logout
-} = require('../controllers/auth.controller');
+} from '../controllers/auth.controller.js';
+import {validateBody} from "../middlewares/validate.middleware.js";
+import {registerSchema} from "../validators/auth.validator.js";
+import {authenticate} from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.post('/register', register);
+router.post('/register', validateBody(registerSchema), register);
 router.post('/login', login);
 router.get('/logout', logout);
-router.get("/profile", profile);
+router.get('/profile', profile);
 
-
-module.exports = router;
+export default router;
