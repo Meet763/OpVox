@@ -30,3 +30,15 @@ export const createUser = async (userData) => {
     return user;
 }
 
+export const getUserProfile = async (userId) => {
+    const user = await User.findById(userId).select(
+        '-password -varificationToken -varificationExpires -resetPasswordToken -resetPasswordExpires -isActive -isSuperAdmin -lastLogin -createdAt -updatedAt -__v'
+    );
+    console.log(user)
+
+    if (!user) {
+        throw new Error('User Not Found');
+    }
+
+    return user;
+}

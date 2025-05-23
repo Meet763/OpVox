@@ -16,7 +16,9 @@ export const loginUser = async ({ email, password }) => {
     user.lastLogin = Date.now();
     await user.save();
 
-    const token = generateToken(user._id, user.email);
+    const token = generateToken({ userId: user._id, email: user.email });
+
+
 
     return {
         user: {

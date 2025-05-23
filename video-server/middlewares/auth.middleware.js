@@ -12,6 +12,8 @@ export const authenticate = (req, res, next) => {
         const decoded = verifyToken(token);
 
         req.user = decoded;
+        console.log(req.user)
+        console.log(decoded)
         next();
         // eslint-disable-next-line no-unused-vars
     } catch (err) {
