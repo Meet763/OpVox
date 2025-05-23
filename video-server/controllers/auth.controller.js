@@ -1,6 +1,6 @@
 import httpStatus from 'http-status-codes';
 import {createUser} from '../services/user.service.js';
-import { sendResponse } from '../utils/response.js';
+import {sendResponse} from '../utils/response.js';
 import {loginUser} from "../services/auth.service.js";
 
 export const register = async (req, res) => {
