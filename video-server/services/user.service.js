@@ -8,7 +8,6 @@ export const findUserByEmail = (email) => {
     });
 };
 
-
 export const createUser = async (userData) => {
     const userExists = await findUserByEmail(userData.email);
     if (userExists) {
