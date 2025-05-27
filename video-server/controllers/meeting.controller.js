@@ -1,4 +1,6 @@
 import httpStatus from 'http-status-codes';
+import { createMeeting } from '../services/meeting.services.js';
+import { sendResponse } from '../utils/response.js';
 
 
 export const createMeetingController = async (req, res) => {
@@ -12,15 +14,13 @@ export const createMeetingController = async (req, res) => {
             true,
             'Meeting Created Successfully',
             {
-                name: newUser.name,
-                email: newUser.email,
-                application_id: newUser.application_id,
+                newMeeting:newMeeting
             }
         );
     }catch(err){
         return sendResponse(
             res,
-            httpStatus.StatusCodes.BAD_REQUESTL,
+            httpStatus.StatusCodes.BAD_REQUEST,
             false,
             err.message
         )

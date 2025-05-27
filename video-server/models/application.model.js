@@ -5,15 +5,17 @@ const { Schema } = mongoose;
 const applicationSchema = new Schema({
     applicationId: String,
     name: String,
-    isActive: Boolean,
-    createdBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
+    application_email_id:{
+        type:String,
+        required:true
+    },
+    isActive: {
+        type:Boolean,
+        default:true
+    },
 }, {
     timestamps: true
 });
 
-const Application = mongoose.model('Application', applicationSchema);
+export default mongoose.model('Application', applicationSchema);
 
-export default Application;
