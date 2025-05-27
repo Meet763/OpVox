@@ -36,6 +36,10 @@ export const login = async (req, res) => {
         // Pass an object, as loginUser expects destructured param
         const loginData = await loginUser({ email, password });
 
+
+        //Logic of cookie set in backend left
+
+        //
         return sendResponse(
             res,
             httpStatus.StatusCodes.OK,
@@ -51,13 +55,6 @@ export const login = async (req, res) => {
             err.message
         );
     }
-};
-
-export const profile = (req, res) => {
-    res.json({
-        status: true,
-        message: 'Profile API'
-    });
 };
 
 export const logout = (req, res) => {
