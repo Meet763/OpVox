@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { type } from 'os';
 
 
 const userSchema = new mongoose.Schema({
@@ -20,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     roles: {
         type: [String],
-        default: []
+        enum: ['User', 'Admin'],
     },
     isActive: {
         type: Boolean,
@@ -33,6 +34,16 @@ const userSchema = new mongoose.Schema({
     application_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Application'
+    },
+    organization_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Organization'
+    },
+    isApplication:{
+        type:Boolean,
+    },
+    isOrganization:{
+        type:Boolean,
     },
     resetPasswordToken: {
         type: String,

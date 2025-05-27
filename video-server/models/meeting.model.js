@@ -1,19 +1,20 @@
 import mongoose from 'mongoose';
+import crypto from 'crypto';
 
-const participantSchema = new mongoose.Schema({
-    particiapnt_name: { type: String, required: true},
+const participantSchema = {
+    participant_name: { type: String, required: true},
     participant_role: { 
         type: String,
         enum: ['host', 'participant'],
         default: 'participant',
         required: true
     },
-    particiapnt_email_id: { type: String, required: true},
+    participant_email_id: { type: String, required: true},
     participant_mobile_number: { type: Number, required: true},
-    participant_secret_key: { type: String, required: true},
+    participant_meetingAccessKey: { type: String, required: true, default: () => crypto.randomBytes(16).toString('hex') },
     joined_at: {type: Date},
     leave_at: {type: Date}
-})
+}
 
 const meetingSchema = new mongoose.Schema({
     meeting_code:{
@@ -24,14 +25,6 @@ const meetingSchema = new mongoose.Schema({
     meeting_link:{
         type: String,
         required: true,
-    },
-    application_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Application'
-    },
-    userId:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
     },
     meeting_start_time: { type: Date, required: true },
     meeting_end_time: { type: Date, required: false },

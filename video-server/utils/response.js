@@ -10,6 +10,7 @@
 export const sendResponse = (res, statusCode, success, message, data) => {
     const response = {
         status: success,
+        statusCode:statusCode,
         message,
     };
 
