@@ -26,7 +26,7 @@ async function createSampleData() {
         isActive: true,
     });
 
-    console.log('Application created:', app);
+
 
     // // Step 3: Update user with application_id
     // user.application_id = app._id;

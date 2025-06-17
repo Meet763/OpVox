@@ -6,10 +6,10 @@ import httpStatus from "http-status-codes";
 export const getProfile = async (req, res) => {
     try{
         const { userId } = req.user
-        console.log(userId)
+
 
         const user = await getUserProfile(userId);
-        console.log(user)
+
 
         return sendResponse(
             res,

@@ -1,3 +1,3 @@
-import nodemailer from 'nodemailer';
-
-
+export const sendEmail = (data) => {
+    // console.log(data)
+}

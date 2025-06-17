@@ -1,3 +1,5 @@
+import applicationRoutes from "./routes/application.routes.js";
+
 console.log('server.js');
 
 //ENV File
@@ -20,6 +22,7 @@ import path from 'path';
 import authRoutes from './routes/auth.route.js';
 import meetingRoutes from './routes/meeting.routes.js'
 import userRoutes from './routes/user.route.js';
+import apiKeyRoutes from './routes/apiKey.routes.js';
 
 //Express
 const app = express();
@@ -32,6 +35,8 @@ app.use(express.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/meeting', meetingRoutes)
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/api-key', apiKeyRoutes);
+app.use('/api/v1/application', applicationRoutes);
 
 //Welcome Routes
 app.get('/', (req, res) => {

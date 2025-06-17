@@ -9,7 +9,7 @@ export const generateMeetingCode = () => {
           segment += characters.charAt(Math.floor(Math.random() * characters.length));
         }
         segments.push(segment);
-        console.log(segment)
+        // console.log(segment)
     }
     return segments.join('-');
 }
