@@ -8,6 +8,10 @@ import mongoose from 'mongoose';
 
 const apiKeySchema = new mongoose.Schema(
     {
+        name:{
+            type: String,
+            unique: true
+        },
         accessKey: {
             type: String,
             unique: true
@@ -20,6 +24,10 @@ const apiKeySchema = new mongoose.Schema(
         isActive: {
             type: Boolean,
             default: true
+        },
+        isAdminLocked: {
+            type: Boolean,
+            default: false
         }
     },
     {

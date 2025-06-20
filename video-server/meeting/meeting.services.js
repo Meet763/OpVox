@@ -1,4 +1,4 @@
-import Meeting from '../models/meeting.model.js'
+import Meeting from './meeting.model.js'
 import { generateMeetingCode } from '../utils/meetingCode.js';
 //import { compareSecretKey } from '../utils/keyUtils.js';
 

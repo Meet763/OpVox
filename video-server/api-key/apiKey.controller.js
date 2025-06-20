@@ -1,12 +1,13 @@
 import httpStatus from 'http-status-codes';
 import { sendResponse } from '../utils/response.js';
-import {createApiKey, updateApiKey, deleteApiKey } from '../services/apiKey.services.js';
+import {createApiKey, updateApiKey, deleteApiKey } from './apiKey.services.js';
 
 export const createApiKeyController = async (req, res) => {
     try{
-        const userId = req.user.userId;
+        const userId = req.user.id;
+        const { name } = req.body
 
-        const apiKeyData = await createApiKey(userId);
+        const apiKeyData = await createApiKey(userId, name);
 
         return sendResponse(
             res,
@@ -18,7 +19,7 @@ export const createApiKeyController = async (req, res) => {
                 secretKey: apiKeyData.secretKey
             }
         );
-    }catch (err){
+    } catch (err) {
         return sendResponse(
             res,
             httpStatus.StatusCodes.BAD_REQUEST,
@@ -31,8 +32,8 @@ export const createApiKeyController = async (req, res) => {
 
 export const updateApiKeyController = async (req, res) => {
     try{
-        const userId = req.user.userId;
-        const { isActive } = req.body;
+        const userId = req.user.id;
+        const { isActive, name } = req.body;
         if(typeof isActive !== 'boolean'){
             return sendResponse(
                 res,
@@ -42,7 +43,7 @@ export const updateApiKeyController = async (req, res) => {
             )
         }
 
-        const updatedKey = await updateApiKey(userId, isActive);
+        const updatedKey = await updateApiKey(userId, isActive, name);
 
         return sendResponse(
             res,

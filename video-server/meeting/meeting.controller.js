@@ -1,5 +1,5 @@
 import httpStatus from 'http-status-codes';
-import { createMeeting } from '../services/meeting.services.js';
+import { createMeeting } from './meeting.services.js';
 import { sendResponse } from '../utils/response.js';
 
 

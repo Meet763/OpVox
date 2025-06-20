@@ -1,5 +1,7 @@
 # Node modules
 node_modules/
+uploads/
+transcripts/
 
 # Environment variables
 .env

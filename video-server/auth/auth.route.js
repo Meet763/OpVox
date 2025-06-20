@@ -3,7 +3,7 @@ import {
     register,
     login,
     logout
-} from '../controllers/auth.controller.js';
+} from '../auth/auth.controller.js';
 
 import {validateBody} from "../middlewares/validate.middleware.js";
 import {registerSchema} from "../validators/auth.validator.js";

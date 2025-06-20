@@ -5,10 +5,18 @@ export const registerSchema = z.object({
     email: z.string().email('Invalid email address'),
     mobileNumber: z.string().optional(),
     password: z.string().min(6, 'Password should be at least 6 characters'),
-    application_id: z.string().optional(),
+    role: z.string(),
+    
 });
 
 export const loginSchema = z.object({
     email: z.string().email('Invalid email address'),
     password: z.string().min(6, 'Password is required'),
 });
+
+export const userUpdateSchema = z.object({
+  name: z.string().min(1, 'Name cannot be empty').optional(),
+  email: z.string().email('Invalid email address').optional(),
+  mobileNumber: z.string().optional(),
+  password: z.string().min(6, 'Password should be at least 6 characters').optional(),
+})
